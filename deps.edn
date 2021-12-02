@@ -1,0 +1,25 @@
+{ :deps {
+    org.clojure/clojure {:mvn/version "1.10.1"}
+    org.clojure/math.combinatorics {:mvn/version "0.1.6"}
+  }
+  :aliases {
+    :repl {
+      :extra-deps {
+        cider/cider-nrepl {:mvn/version "0.27.2"}
+        nrepl/nrepl       {:mvn/version "0.8.3"}
+      }
+      :main-opts [
+        "-m" "nrepl.cmdline"
+      ]
+    }
+    :socket-repl {
+      :exec-fn clojure.core.server/start-server
+      :exec-args {
+        :name "server"
+        :port 5555
+        :accept clojure.core.server/repl
+        :server-daemon false
+      }
+    }
+  }
+}
